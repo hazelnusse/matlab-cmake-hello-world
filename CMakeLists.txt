@@ -2,7 +2,7 @@ project(MATLAB_CMAKE)
 cmake_minimum_required(VERSION 2.8)
 
 set(MATLAB_ROOT "/usr/local/MATLAB/MATLAB_Production_Server/R2013a"
-    CACHE STRING "matlabroot" FORCE)
+    CACHE STRING "matlabroot")
 
 # Get platform dependent mex-file extension
 execute_process(COMMAND ${MATLAB_ROOT}/bin/mexext
@@ -17,7 +17,7 @@ macro(matlab_mex MEX_FCN_NAME MEX_SRC)
         LIBRARY_OUTPUT_NAME ${FILE_BASE_NAME}.${MATLAB_MEX_EXT}
         PREFIX ""
         SUFFIX "")
-    target_link_libraries(${FILE_BASE_NAME} pthread mx mex mat)
+    target_link_libraries(${FILE_BASE_NAME} mx mex mat)
 endmacro(matlab_mex)
 
 add_subdirectory(tests)
